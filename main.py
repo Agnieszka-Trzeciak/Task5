@@ -138,7 +138,8 @@ for mine_name in Mines_names+["Total"]:
     i+=1
 for i in range(len(Mines_names+["Total"])):
     pdf.outlier_information((Mines_names+["Total output"])[i], Outlier_DataFrames[i])   
-pdf_file = pdf.output(dest='S').encode()
+#pdf_file = pdf.output(dest='S').encode()
+pdf_file = pdf.output()
 
 def create_pdf():
     """Generates a simple PDF in memory and returns it as bytes."""
@@ -157,6 +158,7 @@ def create_pdf():
 
 st.divider()
 st.download_button(label = "Download pdf report",data=pdf_file, file_name = 'Report.pdf', mime="application//pdf")
+
 
 
 
