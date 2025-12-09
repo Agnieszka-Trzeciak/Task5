@@ -141,7 +141,8 @@ for i in range(len(Mines_names+["Total"])):
 pdf_bytes = pdf.output()
 
 st.divider()
-st.download_button("Download pdf report",data=pdf_bytes, file_name = 'Report.pdf', width='stretch')
+st.download_button("Download pdf report",data=pdf_bytes, file_name = 'Report.pdf', mime="application/pdf",width='stretch')
+
 
 
 
