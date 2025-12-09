@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 import csv
-from io import StringIO
+from io import StringIO,BytesIO
 import numpy as np
 from outliers import smirnov_grubbs as grubbs
 import matplotlib.pyplot as plt
@@ -130,9 +130,11 @@ for mine_name in Mines_names+["Total"]:
         ax.set_xlabel('Date')
         ax.set_ylabel('Output')
         ax.tick_params(rotation=45)
-        fig.savefig(f'{mine_name.replace(" ","_")}.png',dpi=fig.dpi*1, bbox_inches='tight')
+        img_buffer = BytesIO()
+        fig.savefig(img_buffer,format='png',dpi=fig.dpi*2, bbox_inches='tight')
+        img_buffer.seek(0)
         st.pyplot(fig)
-    pdf.mine_information(mine_name,Mine_Summary[i],Outlier_DataFrames[-1])
+    pdf.mine_information(mine_name,Mine_Summary[i],Outlier_DataFrames[-1],img_buffer)
     os.remove(f'{mine_name.replace(" ","_")}.png')
     i+=1
 for i in range(len(Mines_names+["Total"])):
@@ -142,6 +144,7 @@ pdf.output('Report.pdf')
 st.divider()
 with open('Report.pdf', 'rb') as report:
     st.download_button("Download pdf report",file = report, file_name = 'Report.pdf', width='stretch')
+
 
 
 
