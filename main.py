@@ -158,7 +158,8 @@ def create_pdf():
 pdf = creat_pdf()
 
 st.divider()
-st.download_button(label = "Download pdf report",data=pdf, file_name = 'Report.pdf', mime="application/pdf",width='stretch')
+st.download_button(label = "Download pdf report",data=pdf, file_name = 'Report.pdf', mime="application//pdf")
+
 
 
 
