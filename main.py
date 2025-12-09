@@ -35,8 +35,8 @@ Chosen_type = col2.selectbox("Plot type", ["Line","Bar","Stacked"]).lower()
 st.divider()
 
 Temp,col1,Temp,col2,Temp = st.columns([1,4,1,4,1])
-col1.button("Refresh",width='stretch')
-col2.button("Generate pdf",width='stretch')
+col1.button("Refresh data source",width='stretch')
+col2.download_button("Download pdf report",data='Report.pdf',width='stretch')
 
 st.divider()
 
