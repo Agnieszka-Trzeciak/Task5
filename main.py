@@ -130,12 +130,11 @@ for mine_name in Mines_names+["Total"]:
         ax.set_xlabel('Date')
         ax.set_ylabel('Output')
         ax.tick_params(rotation=45)
+        st.pyplot(fig)
         img_buffer = BytesIO()
         fig.savefig(img_buffer,format='png',dpi=fig.dpi*2, bbox_inches='tight')
         img_buffer.seek(0)
-        st.pyplot(fig)
     pdf.mine_information(mine_name,Mine_Summary[i],Outlier_DataFrames[-1],img_buffer)
-    os.remove(f'{mine_name.replace(" ","_")}.png')
     i+=1
 for i in range(len(Mines_names+["Total"])):
     pdf.outlier_information((Mines_names+["Total output"])[i], Outlier_DataFrames[i])   
@@ -143,6 +142,7 @@ pdf_bytes = pdf.output()
 
 st.divider()
 st.download_button("Download pdf report",data=pdf_bytes, file_name = 'Report.pdf', width='stretch')
+
 
 
 
