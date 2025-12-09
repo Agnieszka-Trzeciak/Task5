@@ -139,11 +139,11 @@ for mine_name in Mines_names+["Total"]:
     i+=1
 for i in range(len(Mines_names+["Total"])):
     pdf.outlier_information((Mines_names+["Total output"])[i], Outlier_DataFrames[i])   
-pdf.output('Report.pdf')
+pdf_bytes = pdf.output()
 
 st.divider()
-with open('Report.pdf', 'rb') as report:
-    st.download_button("Download pdf report",file = report, file_name = 'Report.pdf', width='stretch')
+st.download_button("Download pdf report",data=pdf_bytes, file_name = 'Report.pdf', width='stretch')
+
 
 
 
