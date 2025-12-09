@@ -3,7 +3,7 @@ import requests
 import csv
 from io import StringIO
 import numpy as np
-from OUTLIERS import smirnov_grubbs as grubbs
+from outliers import smirnov_grubbs as grubbs
 import matplotlib.pyplot as plt
 import datetime
 import streamlit as st
@@ -143,4 +143,5 @@ for i in range(len(Mines_names+["Total"])):
     pdf.outlier_information((Mines_names+["Total output"])[i], Outlier_DataFrames[i])   
 pdf.output('Report.pdf')
     
+
 
