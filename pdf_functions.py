@@ -10,8 +10,8 @@ class PDF(FPDF):
     def sub_title(self,text):
         self.set_font('times','B',18)
         self.cell(0,10,text,ln=True, align='C')
-    def add_plot(self,mine_name):
-        self.image(mine_name.replace(" ","_")+".png",w=self.w*0.9)
+    def add_plot(self,plot_file):
+        self.image(plot_file,w=self.w*0.9)
     def add_metrics(self,mine_summary):
         self.set_font('times','B',14)
         self.cell(0,10,'Metrics:',ln=True)
@@ -38,11 +38,11 @@ class PDF(FPDF):
             self.ln()
         else:
             self.cell(0,10,"None detected",ln=True)
-    def mine_information(self,mine_name,mine_summary,outliers):
+    def mine_information(self,mine_name,mine_summary,outliers,plot_file):
         self.sub_title(mine_name)
         self.add_metrics(mine_summary)
         self.add_outliers(outliers)
-        self.add_plot(mine_name)
+        self.add_plot(plot_file)
         self.add_page()
     def outlier_information(self,mine_name,outliers):
         Test_names = ["IQR","Z-score","Moving average","""Grubbs'"""]
@@ -90,3 +90,4 @@ class PDF(FPDF):
 
                 
             
+
