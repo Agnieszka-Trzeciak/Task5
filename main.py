@@ -31,7 +31,7 @@ Grubbs_alpha = float(col1.text_input("Grubbs' test alpha",value = 0.05))
 col2.markdown("<h4 style='text-align: center;'>Display settings</h4>", unsafe_allow_html=True)
 pol_degree = int(col2.selectbox("Degree of fit polynomial",[1,2,3,4]))
 Chosen_type = col2.selectbox("Plot type", ["Line","Bar","Stacked"]).lower()
-col2.markdown("<p></p>")
+col2.markdown("")
 Temp,col2m,Temp = col2.columns([1,4,1])
 col2m.button("Refresh data source",width='stretch')
 
@@ -143,5 +143,6 @@ pdf_file = pdf.output()
 st.divider()
 Temp,col,Temp = st.columns([1,4,1])
 col.download_button(label = "Download pdf report",data=bytes(pdf_file), file_name = 'Report.pdf', mime="application/pdf",width='stretch')
+
 
 
