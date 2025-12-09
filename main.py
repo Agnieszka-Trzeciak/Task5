@@ -140,4 +140,6 @@ for i in range(len(Mines_names+["Total"])):
     pdf.outlier_information((Mines_names+["Total output"])[i], Outlier_DataFrames[i])   
 pdf_file = pdf.output()
 st.divider()
-st.download_button(label = "Download pdf report",data=bytes(pdf_file), file_name = 'Report.pdf', mime="application/pdf")
+Temp,col,Temp = st.columns([1,4,1])
+col.download_button(label = "Download pdf report",data=bytes(pdf_file), file_name = 'Report.pdf', mime="application/pdf",width='stretch')
+
